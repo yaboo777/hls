@@ -51,12 +51,12 @@ $(function () {
 	};
 
 	Number.isFinite = Number.isFinite || function (any) {
-		$debug2.append('<li>' + (typeof any) + '</li>');
+		$debug2.append('<li>' + isFinite(any) + '</li>');
 		return typeof any === 'number' && isFinite(any);
 	};
 
 	Number.isNaN = Number.isNaN || function (any) {
-		$debug2.append('<li>' + (typeof any) + '</li>');
+		$debug2.append('<li>' + isNaN(any) + '</li>');
 		return typeof any === 'number' && isNaN(any);
 	};
 
