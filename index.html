@@ -8,8 +8,10 @@
 <body>
 <button id="playButton">▶</button>
 <p><span id="current"></span><input type="range" id="seekbar"><span id="duration"></span></p>
+<!--
 <ul id="debug"></ul>
 <ul id="debug2"></ul>
+-->
 <audio preload="auto" id="audio">
 	<source type="audio/mpeg" src="http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8">
 </audio>
@@ -23,8 +25,8 @@ $(function () {
 	var $duration = $('#duration');
 	var $seekbar = $('#seekbar');
 	var seekbar = $seekbar[0];
-	var $debug = $('#debug');
-	var $debug2 = $('#debug2');
+//	var $debug = $('#debug');
+//	var $debug2 = $('#debug2');
 
 	var convertTime = function (time) {
 		if (!Number.isFinite(time) || Number.isNaN(time)) {
@@ -44,7 +46,7 @@ $(function () {
 	var setDuration = function () {
 		var duration = audio.duration;
 		$duration.text(convertTime(duration));
-		$debug.append('<li>' + duration + '</li>');
+//		$debug.append('<li>' + duration + '</li>');
 		setTimeout(function () {
 			setDuration();
 		}, 1000);
