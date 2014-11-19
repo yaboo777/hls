@@ -34,6 +34,14 @@ $(function () {
 		return strHour + ':' + strMin + ':' + strSec;
 	};
 
+	var setDuration = function () {
+		var duration = audio.duration;
+		$duration.text(convertTime(duration));
+		setTimeout(function () {
+			setDuration();
+		}, 1000);
+	};
+
 	$current.text('00:00:00');
 
 	$button.on('click', function () {
@@ -48,11 +56,11 @@ $(function () {
 	});
 	
 	$audio.on('loadedmetadata', function () {
-		var duration = audio.duration;
+//		var duration = audio.duration;
 
 //		$button.removeAttr('disabled');
 
-		$duration.text(convertTime(duration));
+//		$duration.text(convertTime(duration));
 
 		seekbar.disabled = false;
 		seekbar.min = seekbar.value = audio.initialTime || 0;
@@ -68,6 +76,10 @@ $(function () {
 		audio.currentTime = this.valueAsNumber;
 		$current.text(convertTime(this.valueAsNumber));
 	});
+
+	setTimeout(function () {
+		setDuration();
+	}, 1000);
 });
 </script>
 </body>
