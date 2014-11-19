@@ -9,6 +9,7 @@
 <button id="playButton">▶</button>
 <p><span id="current"></span><input type="range" id="seekbar"><span id="duration"></span></p>
 <ul id="debug"></ul>
+<ul id="debug2"></ul>
 <audio preload="auto" id="audio">
 	<source type="audio/mpeg" src="http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8">
 </audio>
@@ -23,6 +24,7 @@ $(function () {
 	var $seekbar = $('#seekbar');
 	var seekbar = $seekbar[0];
 	var $debug = $('#debug');
+	var $debug2 = $('#debug2');
 
 	var convertTime = function (time) {
 		if (Number.isFinite(time) || Number.isNaN(time)) {
@@ -49,10 +51,12 @@ $(function () {
 	};
 
 	Number.isFinite = Number.isFinite || function (any) {
+		$debug2.append('<li>' + typeof any + '</li>');
 		return typeof any === 'number' && isFinite(any);
 	};
 
 	Number.isNaN = Number.isNaN || function (any) {
+		$debug2.append('<li>' + typeof any + '</li>');
 		return typeof any === 'number' && isNaN(any);
 	};
 
