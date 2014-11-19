@@ -25,7 +25,7 @@ $(function () {
 	var $duration = $('#duration');
 	var $seekbar = $('#seekbar');
 	var seekbar = $seekbar[0];
-//	var $debug = $('#debug');
+	var $debug = $('#debug');
 //	var $debug2 = $('#debug2');
 
 	var convertTime = function (time) {
@@ -46,7 +46,7 @@ $(function () {
 	var setDuration = function () {
 		var duration = audio.duration;
 		$duration.text(convertTime(duration));
-//		$debug.append('<li>' + duration + '</li>');
+		$debug.append('<li>' + duration + '</li>');
 		setTimeout(function () {
 			setDuration();
 		}, 1000);
