@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<button id="playButton" disabled>▶</button>
+<button id="playButton">▶</button>
 <p><span id="current"></span><input type="range" id="seekbar"><span id="duration"></span></p>
 <audio preload="auto" id="audio">
 	<source type="audio/mpeg" src="http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8">
@@ -50,7 +50,7 @@ $(function () {
 	$audio.on('loadedmetadata', function () {
 		var duration = audio.duration;
 
-		$button.removeAttr('disabled');
+//		$button.removeAttr('disabled');
 
 		$duration.text(convertTime(duration));
 
