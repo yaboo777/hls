@@ -42,7 +42,7 @@ $(function () {
 	var setDuration = function () {
 		var duration = audio.duration;
 		$duration.text(convertTime(duration));
-//		$debug.append('<li>' + duration + '</li>');
+		$debug.append('<li>' + duration + '</li>');
 		setTimeout(function () {
 			setDuration();
 		}, 1000);
