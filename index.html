@@ -27,7 +27,7 @@ $(function () {
 	var $debug2 = $('#debug2');
 
 	var convertTime = function (time) {
-		if (Number.isFinite(time) || Number.isNaN(time)) {
+		if (!Number.isFinite(time) || Number.isNaN(time)) {
 			return '00:00:00';
 		}
 		time = parseInt(time, 10);
@@ -51,12 +51,10 @@ $(function () {
 	};
 
 	Number.isFinite = Number.isFinite || function (any) {
-		$debug2.append('<li>' + isFinite(any) + '</li>');
 		return typeof any === 'number' && isFinite(any);
 	};
 
 	Number.isNaN = Number.isNaN || function (any) {
-		$debug2.append('<li>' + isNaN(any) + '</li>');
 		return typeof any === 'number' && isNaN(any);
 	};
 
