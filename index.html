@@ -25,6 +25,9 @@ $(function () {
 	var $debug = $('#debug');
 
 	var convertTime = function (time) {
+		if (Number.isFinite(time) || Number.isNaN(time)) {
+			return '00:00:00';
+		}
 		time = parseInt(time, 10);
 		var hour = parseInt(time / 3600, 10);
 		var min = parseInt((time - 3600 * hour) / 60, 10);
@@ -39,10 +42,18 @@ $(function () {
 	var setDuration = function () {
 		var duration = audio.duration;
 		$duration.text(convertTime(duration));
-		$debug.append('<li>' + duration + '</li>');
+//		$debug.append('<li>' + duration + '</li>');
 		setTimeout(function () {
 			setDuration();
 		}, 1000);
+	};
+
+	Number.isFinite = Number.isFinite || function (any) {
+		return typeof any === 'number' && isFinite(any);
+	};
+
+	Number.isNaN = Number.isNaN || function (any) {
+		return typeof any === 'number' && isNaN(any);
 	};
 
 	$current.text('00:00:00');
@@ -60,9 +71,7 @@ $(function () {
 	
 	$audio.on('loadedmetadata', function () {
 //		var duration = audio.duration;
-
 //		$button.removeAttr('disabled');
-
 //		$duration.text(convertTime(duration));
 
 		seekbar.disabled = false;
