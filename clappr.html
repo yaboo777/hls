@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>clappr test</title>
+</head>
+<body>
+<div id="player"></div>
+<script src="clappr/public/j/vendor/jquery.min.js"></script>
+<script src="clappr/public/j/vendor/underscore-min.js"></script>
+<script src="clappr/dist/clappr.js"></script>
+<script>
+var $player = $('#player');
+var player = new Clappr.Player({source: 'http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8'});
+//var player = new Clappr.Player({source: 'http://a.filmymp4.com/file/b0a33021fc6744236718462db0abcfa3-1.mp4/d/Jobs-BRRip-1_filmymp4.com.mp4'});
+player.attachTo($player[0]);
+</script>
+</body>
+</html>

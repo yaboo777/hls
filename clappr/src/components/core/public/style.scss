@@ -1,0 +1,43 @@
+@import 'compass/reset/utilities';
+@import 'compass/css3/transform';
+@import 'noselect';
+@import 'fontsmoothing';
+
+
+[data-player] {
+  @include nested-reset;
+  @include no-select;
+  @include font-smoothing;
+  @include transform(translate3d(0,0,0));
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  height: 594px;
+  width: 1055px;
+  font-style: normal;
+  font-weight: normal;
+  text-align: center;
+  overflow: hidden;
+  font-size: 100%;
+  color: #000;
+  background-color: #000;
+  font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+  text-shadow: 0 0 0;
+  box-sizing: border-box;
+
+  * {
+    max-width: initial;
+    box-sizing: inherit;
+    float: initial;
+  }
+
+  &.fullscreen {
+    width: 100%;
+    height: 100%;
+  }
+
+  &.nocursor {
+    cursor: none;
+  }
+}

@@ -1,0 +1,55 @@
+@import "compass/css3";
+@import "fontsmoothing";
+
+@font-face {
+  font-family: "Player";
+  src: url("http://cdn.clappr.io/latest/assets/Player-Regular.eot");
+  src: url("http://cdn.clappr.io/latest/assets/Player-Regular.eot?#iefix") format("embedded-opentype"),
+       url("http://cdn.clappr.io/latest/assets/Player-Regular.ttf") format("truetype"),
+       url("http://cdn.clappr.io/latest/assets/Player-Regular.svg#player") format("svg");
+}
+.player-poster[data-poster] {
+  cursor: pointer;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 998;
+  top: 0;
+
+  .poster-background[data-poster] {
+    width: 100%;
+    height: 100%;
+  }
+
+  .play-wrapper[data-poster] {
+    position: absolute;
+    width: 100%;
+    height: 25%;
+    line-height: 100%;
+    font-size: 25%;
+    top: 50%;
+    text-align: center;
+
+    .poster-icon[data-poster] {
+      font-family:"Player";
+      font-weight: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: 0;
+      speak: none;
+      color: white;
+      opacity: 0.75;
+      @include font-smoothing(antialiased);
+      @include transition(opacity text-shadow 0.1s ease);
+
+      &.play[data-poster]:before{
+        content:"\\e001";
+      }
+
+      &:hover {
+        opacity: 1.0;
+        text-shadow: rgba(255,255,255,0.8) 0 0 15px;
+      }
+    }
+  }
+}
