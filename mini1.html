@@ -13,107 +13,114 @@
 <ul id="debug"></ul>
 <ul id="debug2"></ul>
 -->
+<!--
 <audio preload="auto" id="audio">
 	<source type="audio/mpeg" src="http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8">
-<!--
 	<source type="audio/mpeg" src="http://a.filmymp4.com/file/b0a33021fc6744236718462db0abcfa3-1.mp4/d/Jobs-BRRip-1_filmymp4.com.mp4">
--->
 </audio>
+-->
 <a href="mini2.html">00:00:30</a><br>
 <a href="mini3.html">00:20:00</a><br>
 <a href="mini4.html">00:30:00</a>
 <script src="jquery-2.1.1.js"></script>
 <script>
-	var $audio = $('#audio');
-	var audio = $audio[0];
-	var $button = $('#playButton');
-	var $current = $('#current');
-	var $duration = $('#duration');
-	var $seekbar = $('#seekbar');
-	var seekbar = $seekbar[0];
+	var elAudio = document.createElement('audio'); 
+	elAudio.setAttribute('src', 'http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8'); 
+	elAudio.controls = false; 
+	elAudio.loop = true; 
+	elAudio.load();
+	elAudio.play();
+
+//	var $audio = $('#audio');
+//	var audio = $audio[0];
+//	var $button = $('#playButton');
+//	var $current = $('#current');
+//	var $duration = $('#duration');
+//	var $seekbar = $('#seekbar');
+//	var seekbar = $seekbar[0];
 //	var $debug = $('#debug');
 //	var $debug2 = $('#debug2');
 
 //	audio.autoplay = true;
 
-	var convertTime = function (time) {
-		if (!Number.isFinite(time) || Number.isNaN(time)) {
-			return '00:00:00';
-		}
-		time = parseInt(time, 10);
-		var hour = parseInt(time / 3600, 10);
-		var min = parseInt((time - 3600 * hour) / 60, 10);
-		var sec = parseInt(time - 3600 * hour - 60 * min, 10);
-		var strHour = hour < 10 ? '0' + hour : hour;
-		var strMin = min < 10 ? '0' + min : min;
-		var strSec = sec < 10 ? '0' + sec : sec;
+//	var convertTime = function (time) {
+//		if (!Number.isFinite(time) || Number.isNaN(time)) {
+//			return '00:00:00';
+//		}
+//		time = parseInt(time, 10);
+//		var hour = parseInt(time / 3600, 10);
+//		var min = parseInt((time - 3600 * hour) / 60, 10);
+//		var sec = parseInt(time - 3600 * hour - 60 * min, 10);
+//		var strHour = hour < 10 ? '0' + hour : hour;
+//		var strMin = min < 10 ? '0' + min : min;
+//		var strSec = sec < 10 ? '0' + sec : sec;
+//
+//		return strHour + ':' + strMin + ':' + strSec;
+//	};
 
-		return strHour + ':' + strMin + ':' + strSec;
-	};
+//	var setDuration = function () {
+//		var duration = audio.duration;
+//		$duration.text(convertTime(duration));
+//		seekbar.max = duration;
+////		$debug.append('<li>' + duration + '</li>');
+//		setTimeout(function () {
+//			setDuration();
+//		}, 1000);
+//	};
 
-	var setDuration = function () {
-		var duration = audio.duration;
-		$duration.text(convertTime(duration));
-		seekbar.max = duration;
-//		$debug.append('<li>' + duration + '</li>');
-		setTimeout(function () {
-			setDuration();
-		}, 1000);
-	};
-
-	Number.isFinite = Number.isFinite || function (any) {
-		return typeof any === 'number' && isFinite(any);
-	};
-
-	Number.isNaN = Number.isNaN || function (any) {
-		return typeof any === 'number' && isNaN(any);
-	};
-
-	$current.text('00:00:00');
-
-	$button.on('click', function () {
-		$button.text('■');
-		if (audio.paused) {
-			audio.play();
-			$button.text('■');
-		} else {
-			audio.pause();
-			$button.text('▶');
-		}
-	});
+//	Number.isFinite = Number.isFinite || function (any) {
+//		return typeof any === 'number' && isFinite(any);
+//	};
+//
+//	Number.isNaN = Number.isNaN || function (any) {
+//		return typeof any === 'number' && isNaN(any);
+//	};
+//
+//	$current.text('00:00:00');
+//
+//	$button.on('click', function () {
+//		$button.text('■');
+//		if (audio.paused) {
+//			audio.play();
+//			$button.text('■');
+//		} else {
+//			audio.pause();
+//			$button.text('▶');
+//		}
+//	});
 	
-	$audio.on('loadedmetadata', function () {
+//	$audio.on('loadedmetadata', function () {
 //		var duration = audio.duration;
 //		$button.removeAttr('disabled');
 //		$duration.text(convertTime(duration));
 
-		seekbar.disabled = false;
-		seekbar.min = seekbar.value = audio.initialTime || 0;
-		seekbar.max = duration;
-		audio.currentTime = 30;
-		seekbar.value = audio.currentTime;
-		$current.text(convertTime(audio.currentTime));
-		audio.play();
-	});
-
-	$audio.on('timeupdate', function () {
-		seekbar.value = audio.currentTime;
-		$current.text(convertTime(audio.currentTime));
-	});
-
-	$audio.on('canplay', function () {
-		alert('fire canplay');
+//		seekbar.disabled = false;
+//		seekbar.min = seekbar.value = audio.initialTime || 0;
+//		seekbar.max = duration;
 //		audio.currentTime = 30;
-	});
+//		seekbar.value = audio.currentTime;
+//		$current.text(convertTime(audio.currentTime));
+//		audio.play();
+//	});
 
-	$seekbar.on('change', function () {
-		audio.currentTime = this.valueAsNumber;
-		$current.text(convertTime(this.valueAsNumber));
-	});
+//	$audio.on('timeupdate', function () {
+//		seekbar.value = audio.currentTime;
+//		$current.text(convertTime(audio.currentTime));
+//	});
 
-	setTimeout(function () {
-		setDuration();
-	}, 1000);
+//	$audio.on('canplay', function () {
+//		alert('fire canplay');
+//		audio.currentTime = 30;
+//	});
+
+//	$seekbar.on('change', function () {
+//		audio.currentTime = this.valueAsNumber;
+//		$current.text(convertTime(this.valueAsNumber));
+//	});
+//
+//	setTimeout(function () {
+//		setDuration();
+//	}, 1000);
 </script>
 </body>
 </html>
