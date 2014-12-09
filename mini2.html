@@ -97,8 +97,8 @@ $(function () {
 	});
 
 	$audio.on('canplay', function () {
-		audio.currentTime = 30;
 		audio.play();
+		audio.currentTime = 30;
 	});
 
 	$seekbar.on('change', function () {
