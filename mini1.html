@@ -34,7 +34,7 @@
 //	var $debug = $('#debug');
 //	var $debug2 = $('#debug2');
 
-	audio.autoplay = true;
+//	audio.autoplay = true;
 
 	var convertTime = function (time) {
 		if (!Number.isFinite(time) || Number.isNaN(time)) {
@@ -90,8 +90,10 @@
 		seekbar.disabled = false;
 		seekbar.min = seekbar.value = audio.initialTime || 0;
 		seekbar.max = duration;
-//		audio.currentTime = 30;
-//		audio.play();
+		audio.currentTime = 30;
+		seekbar.value = audio.currentTime;
+		$current.text(convertTime(audio.currentTime));
+		audio.play();
 	});
 
 	$audio.on('timeupdate', function () {
@@ -101,7 +103,6 @@
 
 //	$audio.on('canplay', function () {
 //		audio.currentTime = 30;
-	audio.play();
 //	});
 
 	$seekbar.on('change', function () {
