@@ -101,9 +101,10 @@
 		$current.text(convertTime(audio.currentTime));
 	});
 
-//	$audio.on('canplay', function () {
+	$audio.on('canplay', function () {
+		alert('fire canplay');
 //		audio.currentTime = 30;
-//	});
+	});
 
 	$seekbar.on('change', function () {
 		audio.currentTime = this.valueAsNumber;
