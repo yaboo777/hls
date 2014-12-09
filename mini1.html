@@ -89,7 +89,7 @@
 		seekbar.min = seekbar.value = audio.initialTime || 0;
 		seekbar.max = duration;
 //		audio.currentTime = 30;
-		audio.play();
+//		audio.play();
 	});
 
 	$audio.on('timeupdate', function () {
@@ -99,7 +99,7 @@
 
 //	$audio.on('canplay', function () {
 //		audio.currentTime = 30;
-		audio.play();
+	audio.play();
 //	});
 
 	$seekbar.on('change', function () {
