@@ -8,6 +8,8 @@
 <body>
 <h1>00:00:00</h1>
 <button id="playButton">▶</button>
+<button id="pauseButton">■</button>
+<button id="muteButton">mute</button>
 <p><span id="current"></span><input type="range" id="seekbar"><span id="duration"></span></p>
 <!--
 <ul id="debug"></ul>
@@ -25,12 +27,36 @@
 <script src="jquery-2.1.1.js"></script>
 <script>
 	var elAudio = document.createElement('audio'); 
+  var elPlayButton = document.getElementById('playButton');
+  var elPauseButton = document.getElementById('pauseButton');
+  var elMuteButton = document.getElementById('muteButton');
+  var volume;
 	elAudio.setAttribute('src', 'http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8'); 
 	elAudio.controls = false; 
 	elAudio.loop = true; 
 	elAudio.load();
-	elAudio.play();
 	document.body.appendChild(elAudio);
+
+  elPlayButton.addEventListener('click', function () {
+    if (elAudio.paused) {
+      elAudio.play();
+    }
+  }, false);
+
+  elPauseButton.addEventListener('click', function () {
+    if (elAudio.played) {
+      elAudio.pause();
+    }
+  }, false);
+
+  elMuteButton.addEventListener('click', function () {
+    if (elAudio.volume) {
+      volume = elAudio.volume;
+      elAudio.volume = 0;
+    } else {
+      elAudio.volume = volume;
+    }
+  }, false);
 
 //	var $audio = $('#audio');
 //	var audio = $audio[0];
